@@ -1,6 +1,5 @@
 # ElyatraOS
-Install script for ArchLinux minimal install
-The script will install:
+Install script for ArchLinux minimal with:
 
 --> WayFire <br>
 --> Paru <br>
