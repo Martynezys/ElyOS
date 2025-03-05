@@ -78,8 +78,9 @@ sudo pacman -S --needed --noconfirm thunar thunar-volman gvfs xfce4-settings
 # Step 5: Volume/Brightness Dependancies
 # ==============================
 echo -e "\e[35m=== Step 5: Volume/Brightness Dependancies ===\e[0m"
-sudo pacman -S --needed --noconfirm alsa-lib alsa-firmware alsa-utils alsa-plugins alsa-tools
-paru -S --needed --noconfirm light
+sudo pacman -S alsa-lib alsa-firmware alsa-utils alsa-plugins alsa-tools brightnessctl
+paru -S light
+sudo usermod -aG video $USER
 
 # ==============================
 # Completion Message
