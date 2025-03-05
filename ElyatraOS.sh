@@ -75,6 +75,13 @@ echo "=== Step 4: Installing Thunar file manager ==="
 sudo pacman -S --needed --noconfirm thunar thunar-volman gvfs xfce4-settings
 
 # ==============================
+# Step 5: Volume/Brightness Dependancies
+# ==============================
+echo "=== Step 5: Volume/Brightness Dependancies ==="
+sudo pacman -S alsa-lib alsa-firmware alsa-utils alsa-plugins alsa-tools
+paru -S light
+
+# ==============================
 # Completion Message
 # ==============================
 echo -e "\e[32m=== Installation complete! ===\e[0m"
