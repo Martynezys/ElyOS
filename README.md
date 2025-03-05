@@ -13,3 +13,7 @@ The script will install all of the files and packages mentioned below and my way
 $${\color{red}Before \space install \space dont \space forget \space to \space run}$$  --> **sed -i 's/\r$//' ElyatraOS.sh** <br>
 
 Current script version --> **0.0.1** <--
+
+# Future planned updates:<br>
+--> **Volume/Brightness control** <br>
+--> **Proper Waybar**
