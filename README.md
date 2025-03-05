@@ -10,7 +10,9 @@ The script will install all of the files and packages mentioned below and my way
 --> [**Thunar**](https://docs.xfce.org/xfce/thunar/start) <br>
 --> [**Wofi**](https://github.com/SimplyCEO/wofi)
 
-$${\color{red}Before \space install \space dont \space forget \space to \space run}$$  --> **sed -i 's/\r$//' ElyatraOS.sh** <br>
+$${\color{red}Before \space install \space dont \space forget \space to \space run:}$$<br>
+--> **sed -i 's/\r$//' ElyatraOS.sh** <br>
+--> **chmod +x ElyatraOS.sh**
 
 Current script version --> **0.0.1** <--
 
