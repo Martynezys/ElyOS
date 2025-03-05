@@ -19,7 +19,7 @@ EOF
 # ==============================
 # Confirmation Prompt
 # ==============================
-echo -e "\e[35mElyatraOS Install Script - Version 0.0.1\e[0m"
+echo -e "\e[35mElyatraOS Install Script - Version 0.0.2\e[0m"
 echo -e "\e[37mDo you want to continue with the ElyatraOS installation? (Y/n)\e[0m"
 read -p ">> " answer
 
