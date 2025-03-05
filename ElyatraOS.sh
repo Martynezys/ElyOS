@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e  # Exit immediately if any command fails
 
+clear
+
 # ==============================
 # ASCII Art Logo
 # ==============================
