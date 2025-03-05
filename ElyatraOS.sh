@@ -79,6 +79,5 @@ sudo pacman -S --needed --noconfirm thunar thunar-volman gvfs xfce4-settings
 # ==============================
 echo -e "\e[32m=== Installation complete! ===\e[0m"
 echo "Remember to:"
-echo "1. Reboot your system"
+echo -e "1. \e[35mReboot your system\e[0m"  # Purple color added here
 echo "2. Select Wayfire session on login"
-echo "3. Configure your display manager if needed"
