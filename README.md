@@ -14,7 +14,7 @@ $${\color{red}Before \space install \space dont \space forget \space to \space r
 --> **sed -i 's/\r$//' ElyatraOS.sh** <br>
 --> **chmod +x ElyatraOS.sh**
 
-Current script version --> **0.0.1** <--
+Current script version --> **0.0.2** <--
 
 # Future planned updates:<br>
 --> **Volume/Brightness control** <br>
