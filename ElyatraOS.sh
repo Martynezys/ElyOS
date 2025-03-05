@@ -19,7 +19,7 @@ EOF
 # ==============================
 # Confirmation Prompt
 # ==============================
-echo -e "\e[35mElyatraOS Install Script - Version 0.0.2\e[0m"
+echo -e "\e[35mElyatraOS Install Script - Version 0.0.1\e[0m"
 echo -e "\e[37mDo you want to continue with the ElyatraOS installation? (Y/n)\e[0m"
 read -p ">> " answer
 
@@ -105,7 +105,21 @@ sudo pacman -S --needed --noconfirm fastfetch firefox
 # ==============================
 # Completion Message
 # ==============================
+clear
 echo -e "\e[32m=== Installation complete! ===\e[0m"
 echo "Remember to:"
-echo -e "1. \e[35mReboot your system\e[0m"  # Purple color added here
+echo -e "1. \e[35mReboot your system\e[0m"
 echo "2. Select Wayfire session on login"
+
+# ==============================
+# Reboot Prompt
+# ==============================
+echo -e "\e[37mDo you want to reboot the system now? (Y/n)\e[0m"
+read -p ">> " reboot_answer
+
+if [[ "$reboot_answer" =~ ^[Yy]$ ]]; then
+    echo -e "\e[32mRebooting system...\e[0m"
+    sudo reboot
+else
+    echo -e "\e[33mReboot skipped. Please remember to reboot manually and select Wayfire session.\e[0m"
+fi
