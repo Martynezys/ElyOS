@@ -16,7 +16,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # Step 1: Install Paru AUR Helper
 # ==============================
 echo "=== Step 1: Installing Paru AUR helper ==="
-sudo pacman -S --needed base-devel
+sudo pacman -S --needed --noconfirm base-devel
 if [ ! -d "paru" ]; then
     git clone https://aur.archlinux.org/paru.git
 fi
