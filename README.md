@@ -2,9 +2,9 @@
 Install script for ArchLinux minimal install
 The script will install:
 
---> WayFire
---> Paru
---> LightDM
---> Alacritty
---> Thunar
+--> WayFire <br>
+--> Paru <br>
+--> LightDM <br>
+--> Alacritty <br>
+--> Thunar <br>
 --> Wofi
