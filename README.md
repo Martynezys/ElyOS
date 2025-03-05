@@ -17,5 +17,5 @@ $${\color{red}Before \space install \space dont \space forget \space to \space r
 Current script version --> **0.0.2** <--
 
 # Future planned updates:<br>
---> **Volume/Brightness control** <br>
---> **Proper Waybar**
+--> **styling for waybar** <br>
+--> **Styling for wofi**
