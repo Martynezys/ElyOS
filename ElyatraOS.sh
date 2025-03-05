@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e  # Exit immediately if any command fails
 
+# Version information
+VERSION="0.0.1"
+
+# Display version in purple
+echo -e "\e[35mElyatraOS install script version $VERSION\e[0m"
+
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
