@@ -7,6 +7,6 @@
 --> **Thunar** <br>
 --> **Wofi**
 
-Before install dont forget to run --> $${\color{red}Welcome \space \color{lightblue}To \space \color{orange}Stackoverflow}$$ <br>
+Before install dont forget to run --> $${\color{red}Jako$$ <br>
 
 Current script version --> 0.0.1 <--
