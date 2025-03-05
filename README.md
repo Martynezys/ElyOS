@@ -3,7 +3,7 @@
 Needs to be ran in clean $${\color{purple} Minimal}$$ Arch linux install <br>
 The script will install all of the files and packages mentioned below and my wayfire config.ini<br>
 ## Install script for Arch script includes: <br>
---> **WayFire** <br>
+--> [**WayFire**](https://wayfire.org/) <br>
 --> **Paru** <br>
 --> **LightDM** <br>
 --> **Alacritty** <br>
