@@ -8,3 +8,5 @@ The script will install:
 --> Alacritty <br>
 --> Thunar <br>
 --> Wofi
+
+Current script version 0.0.1
