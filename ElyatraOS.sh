@@ -83,6 +83,26 @@ paru -S --needed --noconfirm light
 sudo usermod -aG video $USER
 
 # ==============================
+# Step 6: Waybar
+# ==============================
+echo -e "\e[35m=== Step 6: Waybar ===\e[0m"
+sudo pacman -S --needed --noconfirm waybar
+mkdir -p ~/.config/waybar
+if [ -f "$SCRIPT_DIR/config.jsonc" ]; then
+    cp "$SCRIPT_DIR/config.jsonc" ~/.config/waybar/config.jsonc
+    echo "Copied config.jsonc from local repository"
+else
+    echo -e "\e[31mERROR: config.jsonc not found in repository directory!\e[0m"
+    exit 1
+fi
+
+# ==============================
+# Step 7: miscellaneous
+# ==============================
+echo -e "\e[35m=== Step 7: miscellaneous ===\e[0m"
+sudo pacman -S --needed --noconfirm fastfetch firefox
+
+# ==============================
 # Completion Message
 # ==============================
 echo -e "\e[32m=== Installation complete! ===\e[0m"
