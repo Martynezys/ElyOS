@@ -39,7 +39,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # ==============================
 # Step 1: Install Paru AUR Helper
 # ==============================
-echo "=== Step 1: Installing Paru AUR helper ==="
+echo -e "\e[35m=== Step 1: Installing Paru AUR helper ===\e[0m"
 sudo pacman -S --needed --noconfirm base-devel
 if [ ! -d "paru" ]; then
     git clone https://aur.archlinux.org/paru.git
@@ -51,14 +51,14 @@ cd ..
 # ==============================
 # Step 2: Install Core Components
 # ==============================
-echo "=== Step 2: Installing core components ==="
+echo -e "\e[35m=== Step 2: Installing core components ===\e[0m"
 paru -S --needed --noconfirm wayfire wf-shell wayfire-plugins-extra alacritty wofi lightdm lightdm-gtk-greeter
 sudo systemctl enable lightdm
 
 # ==============================
 # Step 3: Setup Wayfire Configuration
 # ==============================
-echo "=== Step 3: Setting up Wayfire configuration ==="
+echo -e "\e[35m=== Step 3: Setting up Wayfire configuration ===\e[0m"
 if [ -f "$SCRIPT_DIR/wayfire.ini" ]; then
     mkdir -p ~/.config
     cp "$SCRIPT_DIR/wayfire.ini" ~/.config/wayfire.ini
@@ -71,13 +71,13 @@ fi
 # ==============================
 # Step 4: Install Thunar File Manager
 # ==============================
-echo "=== Step 4: Installing Thunar file manager ==="
+echo -e "\e[35m=== Step 4: Installing Thunar file manager ===\e[0m"
 sudo pacman -S --needed --noconfirm thunar thunar-volman gvfs xfce4-settings
 
 # ==============================
 # Step 5: Volume/Brightness Dependancies
 # ==============================
-echo "=== Step 5: Volume/Brightness Dependancies ==="
+echo -e "\e[35m=== Step 5: Volume/Brightness Dependancies ===\e[0m"
 sudo pacman -S alsa-lib alsa-firmware alsa-utils alsa-plugins alsa-tools
 paru -S light
 
