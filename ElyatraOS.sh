@@ -36,14 +36,6 @@ echo -e "\e[32mStarting installation...\e[0m"
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-
-# ==============================
-# Step 0: pacman confirm
-# ==============================
-echo -e "\e[35m=== Step 0: pacman confirm ===\e[0m"
-sudo pacman -S --needed --noconfirm fastfetch
-
-
 # ==============================
 # Step 1: Install Paru AUR Helper
 # ==============================
@@ -108,7 +100,7 @@ fi
 # Step 7: miscellaneous
 # ==============================
 echo -e "\e[35m=== Step 7: miscellaneous ===\e[0m"
-sudo pacman -S --needed --noconfirm firefox
+sudo pacman -S --needed --noconfirm firefox fastfecth
 
 # ==============================
 # Completion Message
