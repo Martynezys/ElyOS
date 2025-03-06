@@ -100,7 +100,7 @@ fi
 # Step 7: miscellaneous
 # ==============================
 echo -e "\e[35m=== Step 7: miscellaneous ===\e[0m"
-sudo pacman -S --needed --noconfirm firefox fastfecth sof-firmware
+sudo pacman -S --needed --noconfirm firefox fastfecth sof-firmware ttf-roboto-mono
 
 # ==============================
 # Completion Message
