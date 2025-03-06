@@ -18,5 +18,5 @@ Current script version --> **0.0.2** <--
 
 # Future planned updates:<br>
 --> **Styling for waybar** <br>
---> **Styling for wofi**
+--> **Styling for wofi**<br>
 --> **Styling for alacritty**
