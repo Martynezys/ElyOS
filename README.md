@@ -17,5 +17,6 @@ $${\color{red}Before \space install \space dont \space forget \space to \space r
 Current script version --> **0.0.2** <--
 
 # Future planned updates:<br>
---> **styling for waybar** <br>
+--> **Styling for waybar** <br>
 --> **Styling for wofi**
+--> **Styling for alacritty**
