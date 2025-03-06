@@ -40,6 +40,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # ==============================
 # Step 0: pacman confirm
 # ==============================
+echo -e "\e[35m=== Step 0: pacman confirm ===\e[0m"
 sudo pacman -S --needed --noconfirm fastfetch
 
 
