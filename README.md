@@ -14,9 +14,8 @@ $${\color{red}Before \space install \space dont \space forget \space to \space r
 --> **sed -i 's/\r$//' ElyatraOS.sh** <br>
 --> **chmod +x ElyatraOS.sh**
 
-Current script version --> **0.0.2** <--
+Current script version --> **0.0.3** <--
 
 # Future planned updates:<br>
 --> **Styling for waybar** <br>
---> **Styling for wofi**<br>
---> **Styling for alacritty**
+--> **Wayfire changes**
