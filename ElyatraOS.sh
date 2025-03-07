@@ -115,7 +115,7 @@ fi
 # Step 8: miscellaneous
 # ==============================
 echo -e "\e[35m=== Step 8: miscellaneous ===\e[0m"
-sudo pacman -S --needed --noconfirm firefox fastfecth sof-firmware ttf-roboto-mono
+sudo pacman -S --needed --noconfirm firefox fastfetch sof-firmware ttf-roboto-mono
 
 # ==============================
 # Completion Message
