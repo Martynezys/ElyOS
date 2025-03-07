@@ -19,7 +19,7 @@ EOF
 # ==============================
 # Confirmation Prompt
 # ==============================
-echo -e "\e[35mElyatraOS Install Script - Version 0.0.1\e[0m"
+echo -e "\e[35mElyatraOS Install Script - Version 0.0.3\e[0m"
 echo -e "\e[37mDo you want to continue with the ElyatraOS installation? (Y/n)\e[0m"
 read -p ">> " answer
 
@@ -97,9 +97,24 @@ else
 fi
 
 # ==============================
-# Step 7: miscellaneous
+# Step 7: Configs wofi/alacritty
 # ==============================
-echo -e "\e[35m=== Step 7: miscellaneous ===\e[0m"
+echo -e "\e[35m=== Step 7: Configs wofi/alacritty ===\e[0m"
+if [ -d "$SCRIPT_DIR/wofi" ] && [ -d "$SCRIPT_DIR/alacritty" ]; then
+    mkdir -p ~/.config
+    cp -r "$SCRIPT_DIR/wofi" ~/.config/
+    cp -r "$SCRIPT_DIR/alacritty" ~/.config/
+    echo "Copied wofi and alacritty configurations from local repository"
+else
+    echo -e "\e[31mERROR: wofi or alacritty directory not found in repository directory!\e[0m"
+    exit 1
+fi
+
+
+# ==============================
+# Step 8: miscellaneous
+# ==============================
+echo -e "\e[35m=== Step 8: miscellaneous ===\e[0m"
 sudo pacman -S --needed --noconfirm firefox fastfecth sof-firmware ttf-roboto-mono
 
 # ==============================
