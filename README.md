@@ -3,12 +3,12 @@
 Needs to be ran in clean $${\color{purple} Minimal}$$ Arch linux install <br>
 The script will install all of the files and packages mentioned below and my wayfire.ini<br>
 ## Install script includes: <br>
---> [**WayFire**](https://wayfire.org/) <br>
---> [**Paru**](https://github.com/Morganamilo/paru) <br>
---> [**LightDM**](https://wiki.archlinux.org/title/LightDM) <br>
---> [**Alacritty**](https://alacritty.org/) <br>
---> [**Thunar**](https://docs.xfce.org/xfce/thunar/start) <br>
---> [**Wofi**](https://github.com/SimplyCEO/wofi)
+--> Desktop --> [**WayFire**](https://wayfire.org/) <br>
+--> AUR Helper -->  [**Paru**](https://github.com/Morganamilo/paru) <br>
+--> Display Manager --> [**LightDM**](https://wiki.archlinux.org/title/LightDM) <br>
+--> Terminal --> [**Alacritty**](https://alacritty.org/) <br>
+--> File Manager --> [**Thunar**](https://docs.xfce.org/xfce/thunar/start) <br>
+--> App Launcher --> [**Wofi**](https://github.com/SimplyCEO/wofi)
 
 $${\color{red}Before \space install \space dont \space forget \space to \space run:}$$<br>
 --> **sed -i 's/\r$//' ElyatraOS.sh** <br>
