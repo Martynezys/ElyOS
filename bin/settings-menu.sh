@@ -18,7 +18,7 @@ case "$choice" in
     "Connect to wifi")
         ~/.local/bin/wifi-connect.sh
         ;;
-    "Power 0ptions")
+    "Power options")
         ~/.local/bin/pc-utils.sh
         ;;
 esac
