@@ -117,6 +117,9 @@ echo -e "\e[35m=== Step 8: Wofi settings configs ===\e[0m"
 if [ -d "$SCRIPT_DIR/bin" ]; then
     mkdir -p ~/.local
     cp -r "$SCRIPT_DIR/bin" ~/.local/
+    chmod -f +x ~/.local/bin/pc-utils.sh
+    chmod -f +x ~/.local/bin/settings-menu.sh
+    chmod -f +x ~/.local/bin/wifi-connect.sh
     echo "Copied bin folder from repository to ~/.local/"
 else
     echo -e "\e[31mERROR: bin directory not found in repository directory!\e[0m"
