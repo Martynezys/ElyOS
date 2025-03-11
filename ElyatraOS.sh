@@ -110,11 +110,24 @@ else
     exit 1
 fi
 
+# ==============================
+# Step 8: Wofi settings configs
+# ==============================
+echo -e "\e[35m=== Step 8: Wofi settings configs ===\e[0m"  
+if [ -d "$SCRIPT_DIR/bin" ]; then
+    mkdir -p ~/.local
+    cp -r "$SCRIPT_DIR/bin" ~/.local/
+    echo "Copied bin folder from repository to ~/.local/"
+else
+    echo -e "\e[31mERROR: bin directory not found in repository directory!\e[0m"
+    exit 1
+fi
+
 
 # ==============================
-# Step 8: miscellaneous
+# Step 9: miscellaneous
 # ==============================
-echo -e "\e[35m=== Step 8: miscellaneous ===\e[0m"
+echo -e "\e[35m=== Step 9: miscellaneous ===\e[0m"
 sudo pacman -S --needed --noconfirm firefox fastfetch sof-firmware ttf-roboto-mono wl-clipboard
 
 # ==============================
