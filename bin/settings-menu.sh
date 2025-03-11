@@ -5,7 +5,7 @@ export GDK_BACKEND=wayland
 exec 2>/dev/null
 
 # Define menu options
-options="Launch application\nConnect to wifi\nPower Options"
+options="Launch application\nConnect to wifi\nPower options"
 
 # Use wofi to display the menu
 choice=$(echo -e "$options" | wofi --dmenu --prompt="Settings Menu")
@@ -18,7 +18,7 @@ case "$choice" in
     "Connect to wifi")
         ~/.local/bin/wifi-connect.sh
         ;;
-    "Power Options")
+    "Power 0ptions")
         ~/.local/bin/pc-utils.sh
         ;;
 esac
