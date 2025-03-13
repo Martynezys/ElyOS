@@ -6,7 +6,7 @@ The script will install all of the files and packages mentioned below and my way
 --> Desktop --> [**WayFire**](https://wayfire.org/) <br>
 --> AUR Helper -->  [**Paru**](https://github.com/Morganamilo/paru) <br>
 --> Display Manager --> [**LightDM**](https://wiki.archlinux.org/title/LightDM) <br>
---> Terminal --> [**Alacritty**](https://alacritty.org/) <br>
+--> Terminal --> [**Kitty**](https://github.com/kovidgoyal/kitty) <br>
 --> File Manager --> [**Thunar**](https://docs.xfce.org/xfce/thunar/start) <br>
 --> App Launcher --> [**Wofi**](https://github.com/SimplyCEO/wofi)
 
