@@ -52,7 +52,7 @@ cd ..
 # Step 2: Install Core Components
 # ==============================
 echo -e "\e[35m=== Step 2: Installing core components ===\e[0m"
-paru -S --needed --noconfirm wayfire wf-shell wayfire-plugins-extra alacritty wofi lightdm lightdm-gtk-greeter
+paru -S --needed --noconfirm wayfire wf-shell wayfire-plugins-extra kitty wofi lightdm lightdm-gtk-greeter
 sudo systemctl enable lightdm
 
 # ==============================
