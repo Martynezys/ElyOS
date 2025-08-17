@@ -12,7 +12,7 @@ The script will install all of the files and packages mentioned below and my way
 
 $${\color{red}Before \space install \space dont \space forget \space to \space run:}$$<br>
 --> **sed -i 's/\r$//' ElyatraOS.sh** <br>
---> **chmod +x ElyatraOS.sh**
+--> **sudo chmod 777 ElyatraOS.sh**
 
 Current script version --> **0.0.3** <--
 
