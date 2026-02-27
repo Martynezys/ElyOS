@@ -8,6 +8,12 @@ SCRIPT_NAME="ElyOS Installer"
 SCRIPT_VERSION="0.0.3"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+# Logging Setup
+LOG_FILE="/tmp/elyos_install_$(date +%Y%m%d_%H%M%S).log"
+exec > >(tee -a "$LOG_FILE") 2>&1
+
+echo "=== ElyOS Installer Log - $(date) ===" | tee -a "$LOG_FILE"
+
 # Colors
 RED='\e[31m'
 GREEN='\e[32m'
@@ -21,25 +27,25 @@ NC='\e[0m' # No Color
 # Helper Functions
 # ==============================
 print_header() {
-    echo -e "${PURPLE}========================================${NC}"
-    echo -e "${PURPLE}  $1${NC}"
-    echo -e "${PURPLE}========================================${NC}"
+    echo -e "${PURPLE}========================================${NC}" | tee -a "$LOG_FILE"
+    echo -e "${PURPLE}  $1${NC}" | tee -a "$LOG_FILE"
+    echo -e "${PURPLE}========================================${NC}" | tee -a "$LOG_FILE"
 }
 
 print_step() {
-    echo -e "\n${CYAN}>>> $1${NC}"
+    echo -e "\n${CYAN}>>> $1${NC}" | tee -a "$LOG_FILE"
 }
 
 print_error() {
-    echo -e "${RED}[ERROR] $1${NC}" >&2
+    echo -e "${RED}[ERROR] $1${NC}" | tee -a "$LOG_FILE" >&2
 }
 
 print_success() {
-    echo -e "${GREEN}[OK] $1${NC}"
+    echo -e "${GREEN}[OK] $1${NC}" | tee -a "$LOG_FILE"
 }
 
 print_warn() {
-    echo -e "${YELLOW}[WARN] $1${NC}"
+    echo -e "${YELLOW}[WARN] $1${NC}" | tee -a "$LOG_FILE"
 }
 
 # ==============================
@@ -109,7 +115,7 @@ install_paru() {
     print_step "Step 1: Installing Paru AUR helper"
     sudo pacman -S --needed --noconfirm base-devel
     if [ ! -d "paru" ]; then
-        git clone https://aur.archlinux.org/paru.git  
+        git clone https://aur.archlinux.org/paru.git    
     fi
     cd paru
     makepkg -si --noconfirm
@@ -205,16 +211,38 @@ install_misc() {
     print_success "Miscellaneous packages installed"
 }
 
+setup_wallpaper() {
+    print_step "Step 11: Setting up wallpaper with swaybg"
+    # Install swaybg
+    sudo pacman -S --needed --noconfirm swaybg
+    print_success "swaybg installed"
+    
+    # Create wallpaper directory
+    mkdir -p ~/Pictures/wallpapers
+    
+    # Copy wallpaper from repo if it exists
+    if [ -d "$SCRIPT_DIR/wallpapers" ] && ls "$SCRIPT_DIR/wallpapers/"* &> /dev/null; then
+        cp "$SCRIPT_DIR/wallpapers/"* ~/Pictures/wallpapers/
+        print_success "Wallpaper copied to ~/Pictures/wallpapers/"
+    else
+        print_warn "No wallpapers found in repo, you'll need to set one manually"
+    fi
+    
+    print_success "Wallpaper setup complete"
+}
+
 # ==============================
 # Completion & Reboot
 # ==============================
 show_completion() {
     clear
     print_header "INSTALLATION COMPLETE"
-    echo -e "${GREEN}✓ ${SCRIPT_NAME} has been installed successfully!${NC}\n"
+    echo -e "${GREEN}✓ ${SCRIPT_NAME} has been installed successfully!${NC}\n" | tee -a "$LOG_FILE"
     echo "Remember to:"
     echo -e "  1. ${PURPLE}Reboot your system${NC}"
     echo -e "  2. ${PURPLE}Select 'Wayfire' session at the LightDM login screen${NC}\n"
+    echo -e "${GREEN}=== Installation log saved to: ${LOG_FILE} ===${NC}"
+    echo -e "${YELLOW}If you encountered errors, share this log for debugging.${NC}\n"
     
     echo -e "${WHITE}Do you want to reboot the system now? (Y/n)${NC}"
     read -p ">> " reboot_answer
@@ -253,6 +281,7 @@ main() {
     setup_wofi
     setup_bin_scripts
     install_misc
+    setup_wallpaper
     
     show_completion
 }
