@@ -5,7 +5,7 @@ set -e  # Exit immediately if any command fails
 # Configuration
 # ==============================
 SCRIPT_NAME="ElyOS Installer"
-SCRIPT_VERSION="0.0.4"
+SCRIPT_VERSION="0.0.5"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Logging Setup
@@ -151,7 +151,6 @@ install_thunar() {
 
 install_audio_brightness() {
     print_step "Step 5: Audio/Brightness Dependencies"
-    # Swapped ALSA for PipeWire stack (required for Wayland screen sharing/modern audio)
     sudo pacman -S --needed --noconfirm pipewire pipewire-pulse wireplumber pipewire-audio pipewire-alsa brightnessctl
     paru -S --needed --noconfirm light
     sudo usermod -aG video "$USER"
@@ -161,12 +160,12 @@ install_audio_brightness() {
 setup_waybar() {
     print_step "Step 6: Setting up Waybar [OPTIONAL]"
     sudo pacman -S --needed --noconfirm waybar
-    mkdir -p ~/.config/waybar
-    if [ -f "$SCRIPT_DIR/config.jsonc" ]; then
-        cp "$SCRIPT_DIR/config.jsonc" ~/.config/waybar/config.jsonc
-        print_success "Copied waybar config"
+    if [ -d "$SCRIPT_DIR/waybar" ]; then
+        mkdir -p ~/.config/waybar
+        cp -r "$SCRIPT_DIR/waybar/"* ~/.config/waybar/
+        print_success "Copied waybar config and style"
     else
-        print_warn "config.jsonc not found, waybar will use defaults"
+        print_warn "waybar/ folder not found, using defaults"
     fi
 }
 
@@ -187,8 +186,8 @@ setup_terminal_configs() {
 setup_wofi() {
     print_step "Step 8: Setting up Wofi configuration [OPTIONAL]"
     if [ -d "$SCRIPT_DIR/wofi" ]; then
-        mkdir -p ~/.config
-        cp -r "$SCRIPT_DIR/wofi" ~/.config/
+        mkdir -p ~/.config/wofi
+        cp -r "$SCRIPT_DIR/wofi/"* ~/.config/wofi/
         print_success "Copied wofi config"
     else
         print_warn "wofi/ folder not found, using default wofi settings"
@@ -209,20 +208,18 @@ setup_bin_scripts() {
 
 install_misc() {
     print_step "Step 10: Installing miscellaneous packages"
-    sudo pacman -S --needed --noconfirm firefox fastfetch sof-firmware ttf-roboto-mono wl-clipboard network-manager-applet
+    # Added ttf-font-awesome and noto-fonts-emoji for Waybar icons and emojis
+    sudo pacman -S --needed --noconfirm firefox fastfetch sof-firmware ttf-roboto-mono ttf-font-awesome noto-fonts-emoji wl-clipboard network-manager-applet
     print_success "Miscellaneous packages installed"
 }
 
 setup_wallpaper() {
     print_step "Step 11: Setting up wallpaper with swaybg"
-    # Install swaybg
     sudo pacman -S --needed --noconfirm swaybg
     print_success "swaybg installed"
     
-    # Create wallpaper directory
     mkdir -p ~/Pictures/wallpapers
     
-    # Copy wallpaper from repo if it exists
     if [ -d "$SCRIPT_DIR/wallpapers" ] && ls "$SCRIPT_DIR/wallpapers/"* &> /dev/null; then
         cp "$SCRIPT_DIR/wallpapers/"* ~/Pictures/wallpapers/
         print_success "Wallpaper copied to ~/Pictures/wallpapers/"
@@ -261,7 +258,6 @@ show_completion() {
 # Main Execution
 # ==============================
 main() {
-    # Handle --version flag
     if [[ "$1" == "--version" || "$1" == "-v" ]]; then
         echo "${SCRIPT_NAME} v${SCRIPT_VERSION}"
         exit 0
@@ -288,5 +284,4 @@ main() {
     show_completion
 }
 
-# Run main function with all arguments
 main "$@"
