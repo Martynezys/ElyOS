@@ -5,7 +5,7 @@ set -e  # Exit immediately if any command fails
 # Configuration
 # ==============================
 SCRIPT_NAME="ElyOS Installer"
-SCRIPT_VERSION="0.0.3"
+SCRIPT_VERSION="0.0.4"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Logging Setup
@@ -124,10 +124,11 @@ install_paru() {
 }
 
 install_core_components() {
-    print_step "Step 2: Installing core components"
-    paru -S --needed --noconfirm wayfire wf-shell wayfire-plugins-extra kitty wofi lightdm lightdm-gtk-greeter
-    sudo systemctl enable lightdm
-    print_success "Core components installed"
+    print_step "Step 2: Installing core components & Wayland ecosystem"
+    paru -S --needed --noconfirm wayfire wf-shell wayfire-plugins-extra wcm kitty wofi sddm \
+        xorg-xwayland qt5-wayland qt6-wayland polkit-gnome xdg-desktop-portal xdg-desktop-portal-wlr mako
+    sudo systemctl enable sddm
+    print_success "Core components and SDDM installed/enabled"
 }
 
 setup_wayfire_config() {
@@ -144,16 +145,17 @@ setup_wayfire_config() {
 
 install_thunar() {
     print_step "Step 4: Installing Thunar file manager"
-    sudo pacman -S --needed --noconfirm thunar thunar-volman gvfs xfce4-settings
+    sudo pacman -S --needed --noconfirm thunar thunar-volman gvfs xfce4-settings tumbler
     print_success "Thunar installed"
 }
 
 install_audio_brightness() {
     print_step "Step 5: Audio/Brightness Dependencies"
-    sudo pacman -S --needed --noconfirm alsa-lib alsa-firmware alsa-utils alsa-plugins alsa-tools brightnessctl
+    # Swapped ALSA for PipeWire stack (required for Wayland screen sharing/modern audio)
+    sudo pacman -S --needed --noconfirm pipewire pipewire-pulse wireplumber pipewire-audio pipewire-alsa brightnessctl
     paru -S --needed --noconfirm light
     sudo usermod -aG video "$USER"
-    print_success "Audio/brightness tools installed"
+    print_success "Pipewire and brightness tools installed"
 }
 
 setup_waybar() {
@@ -207,7 +209,7 @@ setup_bin_scripts() {
 
 install_misc() {
     print_step "Step 10: Installing miscellaneous packages"
-    sudo pacman -S --needed --noconfirm firefox fastfetch sof-firmware ttf-roboto-mono wl-clipboard
+    sudo pacman -S --needed --noconfirm firefox fastfetch sof-firmware ttf-roboto-mono wl-clipboard network-manager-applet
     print_success "Miscellaneous packages installed"
 }
 
@@ -240,7 +242,7 @@ show_completion() {
     echo -e "${GREEN}✓ ${SCRIPT_NAME} has been installed successfully!${NC}\n" | tee -a "$LOG_FILE"
     echo "Remember to:"
     echo -e "  1. ${PURPLE}Reboot your system${NC}"
-    echo -e "  2. ${PURPLE}Select 'Wayfire' session at the LightDM login screen${NC}\n"
+    echo -e "  2. ${PURPLE}Select 'Wayfire' session at the SDDM login screen${NC}\n"
     echo -e "${GREEN}=== Installation log saved to: ${LOG_FILE} ===${NC}"
     echo -e "${YELLOW}If you encountered errors, share this log for debugging.${NC}\n"
     
