@@ -1,33 +1,56 @@
- window {
-font-size: 40px;
-font-family: "Roboto Mono Medium";
-border: 5px dashed #674ea7;
-background-color: rgba(30,30,30,0.9);
-color: #ffffff;
-border-radius: 15px;
+* {
+    font-family: "Roboto Mono", sans-serif;
 }
 
-#entry {
-margin-right: 5px;
-margin-left: 5px;
-}
-
-#entry:selected {
-background-color: rgba(150,150,150,0.5);
-border-radius: 15px;
-}
-
-#text {
-margin: 10px;
+window {
+    margin: 0px;
+    border: 3px solid rgba(0, 255, 255, 0.8); /* Cyan border */
+    background-color: rgba(33, 33, 33, 0.95); /* Dark gray background */
+    border-radius: 20px;
 }
 
 #input {
-margin-top: 5px;
-margin-left: 5px;
-margin-right: 5px;
-border-radius: 15px;
-background-color: rgba(30,30,30,0.5);
-border: #ffffff;
-color: white;
-padding: 15px;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+#inner-box {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 5px;
+    border: none;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: #ffffff;
+}
+
+#entry {
+    padding: 5px;
+    border-radius: 12px;
+}
+
+#entry:selected {
+    background-color: #00ffff; /* Cyan highlight */
+}
+
+#entry:selected #text {
+    color: #1e1e1e; /* Dark text on cyan background */
+    font-weight: bold;
 }
