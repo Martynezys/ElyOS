@@ -1,0 +1,63 @@
+* {
+    border: none;
+    border-radius: 0;
+    /* Uses the font installed in Step 10 of your script */
+    font-family: "Roboto Mono", sans-serif; 
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(33, 33, 33, 0.9); /* Dark Gray base */
+    color: #ffffff;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: #ffffff;
+    border-radius: 12px;
+    margin: 4px;
+    transition: all 0.2s ease;
+}
+
+/* Cyan accent for the active workspace */
+#workspaces button.active {
+    background: #00ffff; 
+    color: #1e1e1e;
+    font-weight: bold;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 255, 255, 0.3);
+    box-shadow: inherit;
+}
+
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#backlight,
+#tray {
+    padding: 0 12px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Make the battery flash red when it's about to die */
+#battery.critical:not(.charging) {
+    background: #ff5555;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #ff5555;
+    }
+}
